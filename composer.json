@@ -16,10 +16,10 @@
         "symplify/monorepo-builder": "^9.2"
     },
     "psr-4": {
-        "FastFFI\\Opencc\\": "ffi-opencc/src/",
-        "FastFFI\\Pinyin\\": "ffi-pinyin/src/",
-        "FastFFI\\LAC\\": "ffi-lac/src/",
-        "FastFFI\\QrCode\\": "ffi-qrcode/src/"
+        "FastFFI\\Opencc\\": "packages/ffi-opencc/src/",
+        "FastFFI\\Pinyin\\": "packages/ffi-pinyin/src/",
+        "FastFFI\\LAC\\": "packages/ffi-lac/src/",
+        "FastFFI\\QrCode\\": "packages/ffi-qrcode/src/"
     },
     "replace": {
         "meshell/ffi-opencc": "self.version",
