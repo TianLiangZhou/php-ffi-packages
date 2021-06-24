@@ -2,7 +2,6 @@
     "name": "meshell/php-ffi-packages",
     "type": "library",
     "license": "MIT",
-    "version": "1.0.0",
     "authors": [
         {
             "name": "zhoutianliang",
@@ -10,27 +9,34 @@
         }
     ],
     "require": {
-        "php": "^7.4"
+        "php": "^7.4",
+        "ext-ffi": "*"
     },
     "require-dev": {
+        "overtrue/pinyin": "^4.0",
+        "phpbench/phpbench": "^0.17.1",
+        "phpunit/phpunit": "^9.5",
         "symplify/monorepo-builder": "^9.2"
     },
-    "psr-4": {
-        "FastFFI\\Opencc\\": "packages/ffi-opencc/src/",
-        "FastFFI\\Pinyin\\": "packages/ffi-pinyin/src/",
-        "FastFFI\\LAC\\": "packages/ffi-lac/src/",
-        "FastFFI\\QrCode\\": "packages/ffi-qrcode/src/"
+    "autoload": {
+        "psr-4": {
+            "FastFFI\\LAC\\": "packages/ffi-lac/src/",
+            "FastFFI\\Opencc\\": "packages/ffi-opencc/src/",
+            "FastFFI\\Pinyin\\": "packages/ffi-pinyin/src/",
+            "FastFFI\\QrCode\\": "packages/ffi-qrcode/src/"
+        }
     },
+    "version": "1.0.0",
     "replace": {
-        "meshell/ffi-opencc": "self.version",
-        "meshell/ffi-pinyin": "self.version",
-        "meshell/ffi-lac": "self.version",
-        "meshell/ffi-qrcode": "self.version"
+        "meshell/ffi-lac": "1.0.1",
+        "meshell/ffi-opencc": "1.0.1",
+        "meshell/ffi-pinyin": "1.0.1",
+        "meshell/ffi-qrcode": "1.0.1"
     },
-    "minimum-stability": "stable",
     "config": {
         "optimize-autoloader": true,
         "preferred-install": "dist",
         "sort-packages": true
-    }
+    },
+    "minimum-stability": "stable"
 }
