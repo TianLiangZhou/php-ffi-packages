@@ -1,0 +1,36 @@
+{
+    "name": "meshell/php-ffi-packages",
+    "type": "library",
+    "license": "MIT",
+    "version": "1.0.0",
+    "authors": [
+        {
+            "name": "zhoutianliang",
+            "email": "mfkgdyve@gmail.com"
+        }
+    ],
+    "require": {
+        "php": "^7.4"
+    },
+    "require-dev": {
+        "symplify/monorepo-builder": "^9.2"
+    },
+    "psr-4": {
+        "FastFFI\\Opencc\\": "ffi-opencc/src/",
+        "FastFFI\\Pinyin\\": "ffi-pinyin/src/",
+        "FastFFI\\LAC\\": "ffi-lac/src/",
+        "FastFFI\\QrCode\\": "ffi-qrcode/src/"
+    },
+    "replace": {
+        "meshell/ffi-opencc": "self.version",
+        "meshell/ffi-pinyin": "self.version",
+        "meshell/ffi-lac": "self.version",
+        "meshell/ffi-qrcode": "self.version"
+    },
+    "minimum-stability": "stable",
+    "config": {
+        "optimize-autoloader": true,
+        "preferred-install": "dist",
+        "sort-packages": true
+    }
+}
