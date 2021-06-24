@@ -1,3 +1,4 @@
 .idea
 .vscode
 monorepo-builder.php
+vendor
