@@ -26,12 +26,11 @@
             "FastFFI\\QrCode\\": "packages/ffi-qrcode/src/"
         }
     },
-    "version": "1.0.3",
     "replace": {
-        "meshell/ffi-lac": "1.0.3",
-        "meshell/ffi-opencc": "1.0.3",
-        "meshell/ffi-pinyin": "1.0.3",
-        "meshell/ffi-qrcode": "1.0.3"
+        "meshell/ffi-lac": "1.0.4",
+        "meshell/ffi-opencc": "1.0.4",
+        "meshell/ffi-pinyin": "1.0.4",
+        "meshell/ffi-qrcode": "1.0.4"
     },
     "config": {
         "optimize-autoloader": true,
