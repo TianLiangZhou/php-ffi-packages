@@ -15,7 +15,6 @@ use Symplify\MonorepoBuilder\Release\ReleaseWorker\UpdateReplaceReleaseWorker;
 use Symplify\MonorepoBuilder\ValueObject\Option;
 
 return static function (ContainerConfigurator $containerConfigurator): void {
-    echo "aaa";die;
     $parameters = $containerConfigurator->parameters();
     $services = $containerConfigurator->services();
     // for "merge" command
