@@ -20,8 +20,6 @@ set(CMAKE_INSTALL_RPATH "${CMAKE_INSTALL_PREFIX}/lib")
 
 message(STATUS "cmake_install_rpath ${CMAKE_INSTALL_RPATH}")
 
-set(CMAKE_CXX_FLAGS "-O3 -g -pipe -W -Wall -Wno-unused-parameter -fPIC -fpermissive -std=gnu++11")
-message(STATUS "CXX ${CMAKE_CXX_FLAGS}")
 if(NOT DEFINED PADDLE_ROOT)
     message(FATAL_ERROR "please set PADDLE_ROOT with -DPADDLE_ROOT=/path/paddle/lib")
 endif()
@@ -88,6 +86,13 @@ else ()
     message(STATUS "MKLML lib not found.")
 endif()
 
+if(WITH_MKL)
+    set(FLAG_OPENMP "-fopenmp")
+endif()
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -g -o3 ${FLAG_OPENMP} -std=c++11")
+#set(CMAKE_CXX_FLAGS "-O3 -g -pipe -W -Wall -Wno-unused-parameter -fPIC -fpermissive -std=gnu++11")
+message(STATUS "CXX ${CMAKE_CXX_FLAGS}")
+
 if(WITH_STATIC_LIB)
     set(DEPS ${PADDLE_ABS_PATH}/paddle/lib/libpaddle_inference${CMAKE_STATIC_LIBRARY_SUFFIX})
 else()
@@ -99,7 +104,11 @@ else()
 endif()
 
 if (NOT WIN32)
-    set(EXTERNAL_LIB "-ldl -lpthread")
+    if(UNIX AND NOT APPLE)
+        set(EXTERNAL_LIB "-ldl -lrt -lgomp -lz -lm -lpthread")
+    else()
+        set(EXTERNAL_LIB "-ldl -lpthread")
+    endif()
     set(DEPS ${DEPS}
             ${MATH_LIB} ${MKLDNN_LIB}
             glog gflags protobuf xxhash
