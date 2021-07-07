@@ -31,16 +31,12 @@ using namespace std;
 using namespace cv;
 using namespace PaddleOCR;
 
-extern "C" OCR new_ocr(const char *config_file) {
-    ifstream file(config_file);
-    if (!file.good()) {
-        return nullptr;
-    }
+extern "C" OCR new_ocr(const char *configStr) {
     OCRConfig *config;
     DBDetector *dbDetector;
     CRNNRecognizer *recognizer;
     Classifier *cls = nullptr;
-    config = new OCRConfig(config_file);
+    config = new OCRConfig(configStr);
     dbDetector = new DBDetector(
         config->det_model_dir, config->use_gpu, config->gpu_id,
         config->gpu_mem, config->cpu_math_library_num_threads,
@@ -66,7 +62,7 @@ extern "C" OCR new_ocr(const char *config_file) {
     return (PaddleOcr*) new PaddleOcr{config, dbDetector, recognizer, cls};
 }
 
-extern "C" void free_ocr(OCR ocr) {
+extern "C" void free_ocr(OCR *ocr) {
     auto paddleOcr = (PaddleOcr *) ocr;
     delete paddleOcr->recognizer;
     delete paddleOcr->config;
@@ -74,14 +70,51 @@ extern "C" void free_ocr(OCR ocr) {
     delete paddleOcr;
 }
 
-extern "C" void run(OCR ocr, const char *image) {
+extern "C" void free_result(OCRResult *result) {
+    delete result->text;
+    delete result->score;
+    delete result;
+}
+
+extern "C" OCRResult * run(OCR *ocr, const char *image) {
     auto paddleOcr = (PaddleOcr *) ocr;
     cv::Mat src_img = cv::imread(image, cv::IMREAD_COLOR);
     if (!src_img.data) {
         std::cerr << "[ERROR] image read failed! image path: " << image << "\n";
-        return ;
+        return nullptr;
     }
+    auto start = std::chrono::system_clock::now();
     std::vector<std::vector<std::vector<int>>> boxes;
     paddleOcr->dbDetector->Run(src_img, boxes);
-    paddleOcr->recognizer->Run(boxes, src_img, paddleOcr->classifier);
+    auto results = paddleOcr->recognizer->Run(boxes, src_img, paddleOcr->classifier);
+    if (results.size() < 2) {
+        return nullptr;
+    }
+    auto len = int(results.size() / 2);
+    char** ocr_str = new char*[len];
+    char** ocr_score = new char*[len];
+    int i = 1;
+    int score_index = 0;
+    int str_index = 0;
+    for (const auto &item : results) {
+        if (i % 2 == 0) {
+            ocr_score[score_index] = strdup(const_cast<char*>(item.c_str()));
+            std::cout << item.c_str() << std::endl;
+            score_index++;
+        } else {
+            ocr_str[str_index] = strdup(const_cast<char*>(item.c_str()));
+            std::cout << item.c_str();
+            str_index++;
+        }
+        i++;
+    }
+    auto end = std::chrono::system_clock::now();
+    auto duration = std::chrono::duration_cast<std::chrono::microseconds>(end - start);
+    auto exec_time = double(duration.count()) * std::chrono::microseconds::period::num / std::chrono::microseconds::period::den;
+    return new OCRResult{
+        ocr_str,
+        ocr_score,
+        len,
+        exec_time
+    };
 }

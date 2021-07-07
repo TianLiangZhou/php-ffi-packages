@@ -36,6 +36,17 @@ std::vector<std::string> Utility::ReadDict(const std::string &path) {
   return m_vec;
 }
 
+std::vector<std::string> Utility::ParseDict(const std::string &options) {
+    std::stringstream in(options);
+    std::string line;
+    std::vector<std::string> m_vec;
+    while (std::getline(in, line, '\n')) {
+        m_vec.push_back(line);
+    }
+    return m_vec;
+}
+
+
 void Utility::VisualizeBboxes(
     const cv::Mat &srcimg,
     const std::vector<std::vector<std::vector<int>>> &boxes) {

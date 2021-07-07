@@ -54,7 +54,7 @@ public:
     this->label_list_ = Utility::ReadDict(label_path);
     this->label_list_.insert(this->label_list_.begin(),
                              "#"); // blank char for ctc
-    this->label_list_.push_back(" ");
+    this->label_list_.emplace_back(" ");
 
     LoadModel(model_dir);
   }
@@ -62,8 +62,7 @@ public:
   // Load Paddle inference model
   void LoadModel(const std::string &model_dir);
 
-  void Run(std::vector<std::vector<std::vector<int>>> boxes, cv::Mat &img,
-           Classifier *cls);
+  vector<string> Run(const std::vector<std::vector<std::vector<int>>>& boxes, cv::Mat &img, Classifier *cls);
 
 private:
   std::shared_ptr<Predictor> predictor_;
@@ -89,8 +88,7 @@ private:
   // post-process
   PostProcessor post_processor_;
 
-  cv::Mat GetRotateCropImage(const cv::Mat &srcimage,
-                             std::vector<std::vector<int>> box);
+  cv::Mat GetRotateCropImage(const cv::Mat &src_image, std::vector<std::vector<int>> box);
 
 }; // class CrnnRecognizer
 

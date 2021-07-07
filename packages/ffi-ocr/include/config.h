@@ -27,8 +27,8 @@ namespace PaddleOCR {
 
 class OCRConfig {
 public:
-  explicit OCRConfig(const std::string &config_file) {
-    config_map_ = LoadConfig(config_file);
+  explicit OCRConfig(const std::string &configStr) {
+    config_map_ = LoadConfig(configStr);
 
     this->use_gpu = bool(stoi(config_map_["use_gpu"]));
 
@@ -36,8 +36,7 @@ public:
 
     this->gpu_mem = stoi(config_map_["gpu_mem"]);
 
-    this->cpu_math_library_num_threads =
-        stoi(config_map_["cpu_math_library_num_threads"]);
+    this->cpu_math_library_num_threads = stoi(config_map_["cpu_math_library_num_threads"]);
 
     this->use_mkldnn = bool(stoi(config_map_["use_mkldnn"]));
 
@@ -112,10 +111,9 @@ public:
 
 private:
   // Load configuration
-  std::map<std::string, std::string> LoadConfig(const std::string &config_file);
+  static std::map<std::string, std::string> LoadConfig(const std::string &config_file);
 
-  std::vector<std::string> split(const std::string &str,
-                                 const std::string &delim);
+  static std::vector<std::string> split(const std::string &str, const std::string &delim);
 
   std::map<std::string, std::string> config_map_;
 };

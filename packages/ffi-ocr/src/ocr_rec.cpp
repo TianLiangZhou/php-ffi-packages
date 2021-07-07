@@ -16,18 +16,14 @@
 
 namespace PaddleOCR {
 
-void CRNNRecognizer::Run(std::vector<std::vector<std::vector<int>>> boxes,
-                         cv::Mat &img, Classifier *cls) {
-  cv::Mat srcimg;
-  img.copyTo(srcimg);
+vector<string> CRNNRecognizer::Run(const std::vector<std::vector<std::vector<int>>>& boxes, cv::Mat &img, Classifier *cls) {
+  cv::Mat src_img;
+  img.copyTo(src_img);
   cv::Mat crop_img;
   cv::Mat resize_img;
-
-  std::cout << "The predicted text is :" << std::endl;
-  int index = 0;
-  for (int i = 0; i < boxes.size(); i++) {
-    crop_img = GetRotateCropImage(srcimg, boxes[i]);
-
+  std::vector<std::string> str_result;
+  for (int i = boxes.size() - 1; i >= 0; i--) {
+    crop_img = GetRotateCropImage(src_img, boxes[i]);
     if (cls != nullptr) {
       crop_img = cls->Run(crop_img);
     }
@@ -85,11 +81,18 @@ void CRNNRecognizer::Run(std::vector<std::vector<std::vector<int>>> boxes,
       last_index = argmax_idx;
     }
     score /= count;
-    for (int i = 0; i < str_res.size(); i++) {
-      std::cout << str_res[i];
+    if (score < 0.90) {
+        continue;
     }
-    std::cout << "\tscore: " << score << std::endl;
+    std::string ret;
+    for (const auto &str_re : str_res) {
+      ret += str_re;
+    }
+    std::string score_str = std::to_string(score);
+    str_result.push_back(ret);
+    str_result.push_back(score_str);
   }
+  return str_result;
 }
 
 void CRNNRecognizer::LoadModel(const std::string &model_dir) {
@@ -129,10 +132,9 @@ void CRNNRecognizer::LoadModel(const std::string &model_dir) {
   this->predictor_ = CreatePredictor(config);
 }
 
-cv::Mat CRNNRecognizer::GetRotateCropImage(const cv::Mat &srcimage,
-                                           std::vector<std::vector<int>> box) {
+cv::Mat CRNNRecognizer::GetRotateCropImage(const cv::Mat &src_image, std::vector<std::vector<int>> box) {
   cv::Mat image;
-  srcimage.copyTo(image);
+  src_image.copyTo(image);
   std::vector<std::vector<int>> points = box;
 
   int x_collect[4] = {box[0][0], box[1][0], box[2][0], box[3][0]};

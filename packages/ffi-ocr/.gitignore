@@ -1,1 +1,6 @@
 build
+inference
+release
+build-linux-release
+build-window-release
+vendor

@@ -13,10 +13,10 @@ message(STATUS "CMAKE_INSTALL_RPATH ${CMAKE_INSTALL_PREFIX}")
 set(CMAKE_INSTALL_RPATH "${CMAKE_INSTALL_PREFIX}/lib")
 
 # 确保链接库不在系统默认安装的目录上时更改到项目lib上
-list(FIND CMAKE_PLATFORM_IMPLICIT_LINK_DIRECTORIES ${CMAKE_INSTALL_RPATH} isSystemDir)
-if("${isSystemDir}" STREQUAL "-1")
-    set(CMAKE_INSTALL_RPATH "${INSTALL_LIB_DIR}")
-endif("${isSystemDir}" STREQUAL "-1")
+#list(FIND CMAKE_PLATFORM_IMPLICIT_LINK_DIRECTORIES ${CMAKE_INSTALL_RPATH} isSystemDir)
+#if("${isSystemDir}" STREQUAL "-1")
+#    set(CMAKE_INSTALL_RPATH "${INSTALL_LIB_DIR}")
+#endif("${isSystemDir}" STREQUAL "-1")
 
 message(STATUS "cmake_install_rpath ${CMAKE_INSTALL_RPATH}")
 
@@ -121,19 +121,6 @@ message(STATUS "'${PROJECT_SOURCE_DIR}' output dir")
 
 add_library(ocrffi SHARED ${SOURCE})
 target_link_libraries(ocrffi ${DEPS})
-set_target_properties(ocrffi PROPERTIES INSTALL_RPATH_USE_LINK_PATH TRUE)
-
-#add_executable(lac_demo main.c)
-#set_target_properties(lac_demo PROPERTIES INSTALL_RPATH_USE_LINK_PATH TRUE)
-#target_link_libraries(lac_demo lacffi ${DEPS})
-#
-#add_executable(lac_cpp_demo main.cpp)
-#set_target_properties(lac_cpp_demo PROPERTIES INSTALL_RPATH_USE_LINK_PATH TRUE)
-#target_link_libraries(lac_cpp_demo lacffi ${DEPS})
-
+#set_target_properties(ocrffi PROPERTIES INSTALL_RPATH_USE_LINK_PATH TRUE)
 
 install(TARGETS ocrffi DESTINATION ${PROJECT_SOURCE_DIR}/lib)
-#
-#install(TARGETS lac_demo DESTINATION ${PROJECT_SOURCE_DIR}/bin)
-#
-#install(TARGETS lac_cpp_demo DESTINATION ${PROJECT_SOURCE_DIR}/bin)

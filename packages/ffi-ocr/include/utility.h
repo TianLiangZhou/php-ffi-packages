@@ -35,6 +35,7 @@ namespace PaddleOCR {
 class Utility {
 public:
   static std::vector<std::string> ReadDict(const std::string &path);
+  static std::vector<std::string> ParseDict(const std::string &path);
 
   static void
   VisualizeBboxes(const cv::Mat &srcimg,

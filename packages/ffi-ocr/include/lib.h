@@ -17,12 +17,21 @@ typedef struct {
     PaddleOCR::Classifier *classifier;
 } PaddleOcr;
 
+typedef struct {
+    char** text;
+    char** score;
+    int len;
+    double exec_time;
+} OCRResult;
+
+
+
 /**
  *
- * @param mode
+ * @param config_str
  * @return
  */
-extern OCR new_ocr(const char *config_dir);
+extern OCR new_ocr(const char *config_str);
 
 /**
  *
@@ -30,14 +39,20 @@ extern OCR new_ocr(const char *config_dir);
  * @param image
  * @return
  */
-extern void run(OCR ocr, const char *image);
+extern OCRResult * run(OCR *ocr, const char *image);
 
 /**
  *
  * @param ocr
  */
-extern void free_ocr(OCR ocr);
+extern void free_ocr(OCR *ocr);
 
+
+/**
+ *
+ * @param result
+ */
+extern void free_result(OCRResult *result);
 
 #ifdef __cplusplus
 }

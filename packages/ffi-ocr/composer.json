@@ -1,0 +1,21 @@
+{
+  "name": "meshell/ffi-ocr",
+  "description": "description",
+  "minimum-stability": "stable",
+  "license": "proprietary",
+  "authors": [
+    {
+      "name": "meshell",
+      "email": "email@example.com"
+    }
+  ],
+  "require": {
+    "php": "^7.4",
+    "ext-ffi": "*"
+  },
+  "autoload": {
+    "psr-4": {
+      "FastFFI\\OCR\\": "src/"
+    }
+  }
+}
