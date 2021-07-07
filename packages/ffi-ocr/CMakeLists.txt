@@ -86,7 +86,7 @@ else ()
     message(STATUS "MKLML lib not found.")
 endif()
 
-if(WITH_MKL)
+if(MATH_LIB)
     set(FLAG_OPENMP "-fopenmp")
 endif()
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -g -o3 ${FLAG_OPENMP} -std=c++11")
