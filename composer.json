@@ -23,10 +23,12 @@
             "FastFFI\\LAC\\": "packages/ffi-lac/src/",
             "FastFFI\\Opencc\\": "packages/ffi-opencc/src/",
             "FastFFI\\Pinyin\\": "packages/ffi-pinyin/src/",
-            "FastFFI\\QrCode\\": "packages/ffi-qrcode/src/"
+            "FastFFI\\QrCode\\": "packages/ffi-qrcode/src/",
+            "FastFFI\\OCR\\": "packages/ffi-ocr/src/"
         }
     },
     "replace": {
+        "meshell/ffi-ocr": "1.0.4",
         "meshell/ffi-lac": "1.0.4",
         "meshell/ffi-opencc": "1.0.4",
         "meshell/ffi-pinyin": "1.0.4",
