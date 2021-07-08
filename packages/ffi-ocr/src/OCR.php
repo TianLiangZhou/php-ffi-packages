@@ -49,7 +49,7 @@ class OCR
 
     /**
      * OpenCC constructor.
-     * @param array $options [
+     * @param array $options = [
      * 'use_gpu' => 0,
      * 'gpu_id' =>  0,
      * 'gpu_mem' =>  4000,
@@ -128,7 +128,27 @@ class OCR
     }
 
     /**
-     * @param array $options
+     * @param array $options = [
+     * 'use_gpu' => 0,
+     * 'gpu_id' =>  0,
+     * 'gpu_mem' =>  4000,
+     * 'cpu_math_library_num_threads' =>  10,
+     * 'use_mkldnn' =>  0,
+     * 'max_side_len' =>  960,
+     * 'det_db_thresh' =>  0.3,
+     * 'det_db_box_thresh' =>  0.5,
+     * 'det_db_unclip_ratio' =>  1.6,
+     * 'use_polygon_score' => 1,
+     * 'det_model_dir' =>  __DIR__ . '/../inference/ch_ppocr_server_v2.0_det_infer',
+     * 'use_angle_cls' => 0,
+     * 'cls_model_dir' =>  __DIR__ . '/../inference/ch_ppocr_mobile_v2.0_cls_infer',
+     * 'cls_thresh' => 0.9,
+     * 'rec_model_dir' =>  __DIR__ . '/../inference/ch_ppocr_server_v2.0_rec_infer',
+     * 'char_list_file' => __DIR__ . '/../inference/ppocr_keys_v1.txt',
+     * 'visualize' => 1,
+     * 'use_tensorrt' => 0,
+     * 'use_fp16' =>   0,
+     * ]
      * @return static
      */
     public static function new(array $options = []): OCR

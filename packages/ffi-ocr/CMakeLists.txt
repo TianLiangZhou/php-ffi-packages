@@ -130,6 +130,8 @@ message(STATUS "'${PROJECT_SOURCE_DIR}' output dir")
 
 add_library(ocrffi SHARED ${SOURCE})
 target_link_libraries(ocrffi ${DEPS})
-#set_target_properties(ocrffi PROPERTIES INSTALL_RPATH_USE_LINK_PATH TRUE)
+if (APPLE)
+    set_target_properties(ocrffi PROPERTIES INSTALL_RPATH_USE_LINK_PATH TRUE)
+endif()
 
 install(TARGETS ocrffi DESTINATION ${PROJECT_SOURCE_DIR}/lib)
