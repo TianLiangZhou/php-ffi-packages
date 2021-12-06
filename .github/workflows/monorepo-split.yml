@@ -56,11 +56,11 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.ACCESS_TOKEN }}
         with:
-          package-directory: 'packages/${{ matrix.package }}'
-          split-repository-organization: 'TianLiangZhou'
-          split-repository-name: '${{ matrix.package }}'
-          user-name: "TianLiangZhou"
-          user-email: "mfkgdyve456@126.com"
+          package_directory: 'packages/${{ matrix.package }}'
+          repository_organization: 'TianLiangZhou'
+          repository_name: '${{ matrix.package }}'
+          user_name: "TianLiangZhou"
+          user_email: "mfkgdyve456@126.com"
           branch: "master"
 
       # with tag
@@ -73,13 +73,13 @@ jobs:
           tag: ${GITHUB_REF#refs/tags/}
 
           # ↓ split "packages/easy-coding-standard" directory
-          package-directory: 'packages/${{ matrix.package }}'
+          package_directory: 'packages/${{ matrix.package }}'
 
           # ↓ into https://github.com/symplify/easy-coding-standard repository
-          split-repository-organization: 'TianLiangZhou'
-          split-repository-name: '${{ matrix.package }}'
+          repository_organization: 'TianLiangZhou'
+          repository_name: '${{ matrix.package }}'
 
           # ↓ the user signed under the split commit
-          user-name: "TianLiangZhou"
-          user-email: "mfkgdyve456@126.com"
+          user_name: "TianLiangZhou"
+          user_email: "mfkgdyve456@126.com"
           branch: "master"
