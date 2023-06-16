@@ -4,25 +4,25 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "212764a1b2dcae59f37a02f39f395e8f",
+    "content-hash": "38c085564cf70f50bfc1b5ccb4b4289c",
     "packages": [],
     "packages-dev": [
         {
             "name": "symplify/monorepo-builder",
-            "version": "10.1.4",
+            "version": "11.2.3.72",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symplify/monorepo-builder.git",
-                "reference": "f7f7f55e3d094fdbf83138a730a6ff1e83a21ecd"
+                "reference": "7ee5fd436040f30eb0b66696d242db34dc678c26"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symplify/monorepo-builder/zipball/f7f7f55e3d094fdbf83138a730a6ff1e83a21ecd",
-                "reference": "f7f7f55e3d094fdbf83138a730a6ff1e83a21ecd",
+                "url": "https://api.github.com/repos/symplify/monorepo-builder/zipball/7ee5fd436040f30eb0b66696d242db34dc678c26",
+                "reference": "7ee5fd436040f30eb0b66696d242db34dc678c26",
                 "shasum": ""
             },
             "require": {
-                "php": ">=7.1"
+                "php": ">=7.2"
             },
             "bin": [
                 "bin/monorepo-builder"
@@ -30,8 +30,13 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-main": "9.5-dev"
+                    "dev-main": "10.3-dev"
                 }
+            },
+            "autoload": {
+                "files": [
+                    "bootstrap.php"
+                ]
             },
             "notification-url": "https://packagist.org/downloads/",
             "license": [
@@ -39,7 +44,8 @@
             ],
             "description": "Prefixed version of Not only Composer tools to build a Monorepo.",
             "support": {
-                "source": "https://github.com/symplify/monorepo-builder/tree/10.1.4"
+                "issues": "https://github.com/symplify/monorepo-builder/issues",
+                "source": "https://github.com/symplify/monorepo-builder/tree/11.2.3.72"
             },
             "funding": [
                 {
@@ -51,7 +57,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2022-03-16T15:15:04+00:00"
+            "time": "2023-04-17T08:02:55+00:00"
         }
     ],
     "aliases": [],
@@ -64,5 +70,5 @@
         "ext-ffi": "*"
     },
     "platform-dev": [],
-    "plugin-api-version": "2.2.0"
+    "plugin-api-version": "2.3.0"
 }
