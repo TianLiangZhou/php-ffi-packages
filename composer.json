@@ -25,11 +25,11 @@
         }
     },
     "replace": {
-        "meshell/ffi-lac": "1.2.3",
-        "meshell/ffi-ocr": "1.2.3",
-        "meshell/ffi-opencc": "1.2.3",
-        "meshell/ffi-pinyin": "1.2.3",
-        "meshell/ffi-qrcode": "1.2.3"
+        "meshell/ffi-lac": "1.3.0",
+        "meshell/ffi-ocr": "1.3.0",
+        "meshell/ffi-opencc": "1.3.0",
+        "meshell/ffi-pinyin": "1.3.0",
+        "meshell/ffi-qrcode": "1.3.0"
     },
     "config": {
         "optimize-autoloader": true,
