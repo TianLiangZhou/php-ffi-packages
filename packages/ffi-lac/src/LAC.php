@@ -32,7 +32,7 @@ class LAC
      */
     private function __construct(string $dictDir = null)
     {
-        if (ini_get('ffi.enable') == false) {
+        if (!ini_get('ffi.enable')) {
             throw new RuntimeException("请设置php.ini中的ffi.enable参数");
         }
         $this->ffi = $this->makeFFI();

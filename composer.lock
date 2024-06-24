@@ -4,21 +4,21 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "38c085564cf70f50bfc1b5ccb4b4289c",
+    "content-hash": "7888fb487538bcf07fa44fe5ea90a072",
     "packages": [],
     "packages-dev": [
         {
             "name": "symplify/monorepo-builder",
-            "version": "11.2.3.72",
+            "version": "11.2.20",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symplify/monorepo-builder.git",
-                "reference": "7ee5fd436040f30eb0b66696d242db34dc678c26"
+                "reference": "444efe08701776cb1a03b9f3600e715697519aa6"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symplify/monorepo-builder/zipball/7ee5fd436040f30eb0b66696d242db34dc678c26",
-                "reference": "7ee5fd436040f30eb0b66696d242db34dc678c26",
+                "url": "https://api.github.com/repos/symplify/monorepo-builder/zipball/444efe08701776cb1a03b9f3600e715697519aa6",
+                "reference": "444efe08701776cb1a03b9f3600e715697519aa6",
                 "shasum": ""
             },
             "require": {
@@ -45,7 +45,7 @@
             "description": "Prefixed version of Not only Composer tools to build a Monorepo.",
             "support": {
                 "issues": "https://github.com/symplify/monorepo-builder/issues",
-                "source": "https://github.com/symplify/monorepo-builder/tree/11.2.3.72"
+                "source": "https://github.com/symplify/monorepo-builder/tree/11.2.20"
             },
             "funding": [
                 {
@@ -57,7 +57,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2023-04-17T08:02:55+00:00"
+            "time": "2023-11-17T08:30:16+00:00"
         }
     ],
     "aliases": [],
@@ -70,5 +70,5 @@
         "ext-ffi": "*"
     },
     "platform-dev": [],
-    "plugin-api-version": "2.3.0"
+    "plugin-api-version": "2.6.0"
 }

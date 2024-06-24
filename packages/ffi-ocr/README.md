@@ -9,9 +9,17 @@
 
 还需要设置`php.ini` 中的`ffi.enable`为`On`。
 
-项目依赖: __paddle预测库__([点击去下载](https://paddleinference.paddlepaddle.org.cn/user_guides/download_lib.html) )，__预测推理模型库__([点击去下载](https://github.com/PaddlePaddle/PaddleOCR/blob/release/2.1/README_ch.md) )。
+### paddlepaddle
 
-需要为预测库建立软链。
+推理预测库版本: [2.5](https://www.paddlepaddle.org.cn/inference/v2.5/guides/introduction/index_intro.html)
+
+项目依赖: __paddle推理预测库__([点击去下载](https://www.paddlepaddle.org.cn/inference/v2.5/guides/install/download_lib.html) )，__预测模型库__([点击去下载](https://github.com/baidu/lac/releases/tag/v2.1.0) )。
+
+### Linux
+
+将下载的推理预测库存放到: `/opt/paddle_inference`目录。
+
+可以通过`ldd lib/libocrffi.so`显示库的依赖, 再根据情况建立软链。
 
 ```shell 
 [meshell@/] cd /lib64
